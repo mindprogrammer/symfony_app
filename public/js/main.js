@@ -1,0 +1,15 @@
+const articles = document.getElementById('articles');
+
+if (articles) {
+  articles.addEventListener('click', e => {
+    if (e.target.className === 'btn btn-danger delete-article') {
+      if (confirm('Are you sure to remove the article?')) {
+        const id = e.target.getAttribute('data-id');
+        // fetch
+        fetch(`/article/delete/${id}`, {
+          method: 'DELETE'
+        }).then(res => window.location.reload());
+      }
+    }
+  });
+}
